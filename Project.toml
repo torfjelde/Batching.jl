@@ -1,0 +1,13 @@
+name = "Batching"
+uuid = "a4738bf4-2ff1-4f03-87a2-28fa6f9d5d14"
+authors = ["Tor Erlend Fjelde <tor.erlend95@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
