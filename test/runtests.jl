@@ -1,6 +1,9 @@
 using Batching
 using Test
+using ChainRulesCore
+using ChainRulesTestUtils
 
 @testset "Batching.jl" begin
-    # Write your tests here.
+    include("constructors.jl")
+    include("ad.jl")
 end
