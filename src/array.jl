@@ -72,13 +72,3 @@ function batch_like(input::ArrayBatch{<:Any, <:AbstractArray{<:Any,N}}, output::
     x = getindex_nth(output, 1, Val{eventdim(input)}())
     return ArrayBatch{typeof(x), typeof(output), eventdim(input)}(output)
 end
-
-
-# TODO: Should we instead implement `Broadcast.materialize` to re-wrap the result?
-function Broadcast.broadcasted(f::Base.Fix1{typeof(broadcast)}, xs::ArrayBatch)
-    return batch_like(xs, f.x.(value(xs)))
-end
-function Broadcast.broadcast!(f::Base.Fix1{typeof(broadcast)}, xs::ArrayBatch, ys::ArrayBatch)
-    Broadcast.broadcast!(f.x, value(xs), value(ys))
-    return ys
-end
