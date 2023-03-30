@@ -46,9 +46,9 @@ Return `output` as a batch similar to `input`, if `input` is a batch.
 If `input` is not a [`AbstractBatch`](@ref), then `output` is returned.
 
 # Examples
-```jldoctest
+```julia
 julia> xs = batch(ones(2, 3))
-3-element Batching.ArrayBatch{Vector{Float64}, Matrix{Float64}, 2}:
+3-element Batching.ArrayBatch{SubArray{Float64, 1, Matrix{Float64}, Tuple{Base.OneTo{Int64}, Int64}, true}, Matrix{Float64}, 2}:
  [1.0, 1.0]
  [1.0, 1.0]
  [1.0, 1.0]
@@ -62,10 +62,10 @@ julia> # Want to specialize `f` on the case of an `ArrayBatch`.
            # Rewrap as a `batch` similar to `input`, e.g. preserving `eventdim(input)`.
            return batch_like(input, output_batch_maybe)
        end
-f (generic function with 1 methods)
+f (generic function with 1 method)
 
 julia> f(xs)
-3-element Batching.ArrayBatch{Vector{Float64}, Matrix{Float64}, 2}:
+3-element Batching.ArrayBatch{SubArray{Float64, 1, Matrix{Float64}, Tuple{Base.OneTo{Int64}, Int64}, true}, Matrix{Float64}, 2}:
  [2.718281828459045, 2.718281828459045]
  [2.718281828459045, 2.718281828459045]
  [2.718281828459045, 2.718281828459045]
